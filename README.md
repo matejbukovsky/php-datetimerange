@@ -1,4 +1,4 @@
-# php-datetimerange
+# PHP Ratetime Range
 
 ## Create date range
 
