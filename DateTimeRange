@@ -1,0 +1,61 @@
+<?php
+
+namespace MatejBukovsky\Date;
+
+use DateTime;
+
+/**
+ * @author Matej Bukovsky <matejbukovsky@gmail.com>
+ */
+class DateTimeRange
+{
+
+	private $dates;
+
+	private $iterator;
+
+	public function next()
+	{
+		if (isset($this->iterator)) {
+			$this->iterator++;
+		} else {
+			$this->iterator = 0;
+		}
+
+		if (array_key_exists($this->iterator, $this->dates)) {
+			return TRUE;
+		}
+		return FALSE;
+	}
+
+	public function getIterator()
+	{
+		return $this->iterator;
+	}
+
+	public function getDate()
+	{
+		return $this->dates[$this->iterator];
+	}
+
+	public function resetIterator()
+	{
+		$this->iterator = NULL;
+	}
+
+	public function setDates(array $dates)
+	{
+		$this->dates = $dates;
+	}
+
+	public function addDate(DateTime $date)
+	{
+		$this->dates[] = $date;
+	}
+
+	public function isLast()
+	{
+		return (count($this->dates) - 1) === $this->iterator;
+	}
+
+}
