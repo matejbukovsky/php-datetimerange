@@ -2,6 +2,8 @@
 
 ## Create date range
 
+```php
+
       $dateTo = new \DateTimeImmutable();
       $dateFrom = $dateTo->modify('-30 days');
       $interval = new \DateInterval('P1D');
@@ -15,3 +17,4 @@
           $day = $dateRange->getDate();
           echo $day->format('j.n.');
       }
+```
