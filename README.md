@@ -11,7 +11,7 @@
       $datePeriod = new \DatePeriod($dateFrom, $interval, $dateTo);
       
       $dateRange = new \DateTimeRange();
-      $dateRange->setDates(array_reverse(iterator_to_array($datePeriod)));
+      $dateRange->setDates(iterator_to_array($datePeriod));
     
       while ($dateRange->next()) {
           $day = $dateRange->getDate();
