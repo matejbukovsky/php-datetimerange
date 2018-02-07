@@ -1,6 +1,6 @@
 <?php
 
-namespace MatejBukovsky\Date;
+namespace Rezervace\Chart;
 
 use DateTime;
 
@@ -13,6 +13,13 @@ class DateTimeRange
 	private $dates;
 
 	private $iterator;
+
+	public function __construct(\DateTimeInterface $dateFrom, \DateTimeInterface $dateTo, string $intervalSpec = 'P1D')
+	{
+		$interval = new \DateInterval($intervalSpec);
+		$datePeriod = new \DatePeriod($dateFrom, $interval, $dateTo);
+		$this->setDatesByPeriod($datePeriod);
+	}
 
 	public function next()
 	{
@@ -46,6 +53,11 @@ class DateTimeRange
 	public function setDates(array $dates)
 	{
 		$this->dates = $dates;
+	}
+
+	public function setDatesByPeriod(\DatePeriod $period)
+	{
+		$this->dates = iterator_to_array($period);
 	}
 
 	public function addDate(DateTime $date)
