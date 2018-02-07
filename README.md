@@ -6,15 +6,16 @@
 
       $dateTo = new \DateTimeImmutable();
       $dateFrom = $dateTo->modify('-30 days');
-      $interval = new \DateInterval('P1D');
-      
-      $datePeriod = new \DatePeriod($dateFrom, $interval, $dateTo);
-      
-      $dateRange = new \DateTimeRange();
-      $dateRange->setDates(iterator_to_array($datePeriod));
+      $dateRange = new DateTimeRange($dateFrom, $dateTo);
     
       while ($dateRange->next()) {
           $day = $dateRange->getDate();
-          echo $day->format('j.n.');
+          echo $day->format('d.m.Y');
       }
+      
+      // RESULT CAN LOOKS LIKE THAT
+      01.01.2000
+      02.01.2000
+      03.01.2000
+      ...
 ```
