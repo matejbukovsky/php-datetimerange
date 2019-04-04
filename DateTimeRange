@@ -1,6 +1,6 @@
 <?php
 
-namespace Rezervace\Chart;
+namespace MatejBukovsky;
 
 use DateTime;
 
